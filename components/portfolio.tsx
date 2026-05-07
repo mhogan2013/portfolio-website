@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Mail, Download, ExternalLink } from "lucide-react";
+import { Mail, Download, ExternalLink, Menu, X } from "lucide-react";
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -117,6 +117,90 @@ const cardBase =
 const cardHover =
   "hover:bg-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.16)] transition-all duration-200";
 
+// ─── Mobile nav ───────────────────────────────────────────────────────────────
+
+function MobileNav({
+  page,
+  navigate,
+}: {
+  page: Page;
+  navigate: (p: Page) => void;
+}) {
+  const [open, setOpen] = useState(false);
+
+  const handleNavigate = (p: Page) => {
+    navigate(p);
+    setOpen(false);
+  };
+
+  return (
+    <>
+      {/* Top bar */}
+      <div className="md:hidden fixed top-0 left-0 right-0 h-[60px] bg-[#0f0f0f] border-b border-[rgba(255,255,255,0.08)] flex items-center justify-between px-6 z-20">
+        <p className="text-[#f5f5f5] font-semibold text-base">Michael Hogan</p>
+        <button
+          onClick={() => setOpen(!open)}
+          className="text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors duration-150 p-1"
+          aria-label="Toggle menu"
+        >
+          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </div>
+
+      {/* Slide-down menu */}
+      {open && (
+        <div className="md:hidden fixed top-[60px] left-0 right-0 bg-[#0f0f0f] border-b border-[rgba(255,255,255,0.08)] z-20">
+          <nav className="p-4 space-y-0.5">
+            {navItems.map((item) => {
+              const active = page === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavigate(item.id)}
+                  className={`w-full text-left px-3 py-3 rounded-lg text-sm transition-colors duration-150 ${
+                    active
+                      ? "text-[#0d9488] bg-[rgba(13,148,136,0.08)]"
+                      : "text-[#8a8a8a] hover:text-[#a3a3a3] hover:bg-[rgba(255,255,255,0.03)]"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
+          <div className="px-7 py-4 border-t border-[rgba(255,255,255,0.08)] flex items-center gap-5">
+            <a
+              href="https://www.linkedin.com/in/hoganmj2013/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#8a8a8a] hover:text-[#0d9488] transition-colors duration-150"
+              aria-label="LinkedIn"
+            >
+              <LinkedinIcon className="w-5 h-5" />
+            </a>
+            <a
+              href="https://github.com/mhogan2013"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#8a8a8a] hover:text-[#0d9488] transition-colors duration-150"
+              aria-label="GitHub"
+            >
+              <GithubIcon className="w-5 h-5" />
+            </a>
+            <a
+              href="mailto:hogan.michael.james@gmail.com"
+              className="text-[#8a8a8a] hover:text-[#0d9488] transition-colors duration-150"
+              aria-label="Email"
+            >
+              <Mail className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 // ─── Sidebar ─────────────────────────────────────────────────────────────────
 
 function Sidebar({
@@ -127,9 +211,7 @@ function Sidebar({
   navigate: (p: Page) => void;
 }) {
   return (
-    <aside
-      className="fixed left-0 top-0 bottom-0 w-60 bg-[#0f0f0f] border-r border-[rgba(255,255,255,0.08)] flex flex-col z-10"
-    >
+    <aside className="hidden md:flex fixed left-0 top-0 bottom-0 w-60 bg-[#0f0f0f] border-r border-[rgba(255,255,255,0.08)] flex-col z-10">
       {/* Brand */}
       <div className="px-6 py-7 border-b border-[rgba(255,255,255,0.08)]">
         <p className="text-[#f5f5f5] font-semibold text-base leading-tight">
@@ -262,12 +344,12 @@ function HomePage({ navigate }: { navigate: (p: Page) => void }) {
         </div>
       </div>
 
-      {/* Bento grid */}
-      <div className="grid grid-cols-3 gap-4">
-        {/* Featured Project — col-span-2 */}
+      {/* Bento grid — 1 col on mobile, 3 col on desktop */}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        {/* Featured Project — full width mobile, span-2 desktop */}
         <button
           onClick={() => navigate("work")}
-          className={`col-span-2 ${cardBase} ${cardHover} p-6 text-left group`}
+          className={`md:col-span-2 ${cardBase} ${cardHover} p-6 text-left group`}
         >
           <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#8a8a8a] mb-3">
             Featured Project
@@ -280,10 +362,10 @@ function HomePage({ navigate }: { navigate: (p: Page) => void }) {
           </p>
         </button>
 
-        {/* Apps — col-span-1 */}
+        {/* Apps */}
         <button
           onClick={() => navigate("apps")}
-          className={`col-span-1 ${cardBase} ${cardHover} p-6 text-left group`}
+          className={`${cardBase} ${cardHover} p-6 text-left group`}
         >
           <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#8a8a8a] mb-3">
             Apps
@@ -294,10 +376,10 @@ function HomePage({ navigate }: { navigate: (p: Page) => void }) {
           <p className="text-[#8a8a8a] text-sm mt-1">1 live product</p>
         </button>
 
-        {/* Videos — col-span-1 */}
+        {/* Videos */}
         <button
           onClick={() => navigate("videos")}
-          className={`col-span-1 ${cardBase} ${cardHover} p-6 text-left group`}
+          className={`${cardBase} ${cardHover} p-6 text-left group`}
         >
           <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#8a8a8a] mb-3">
             Videos
@@ -308,12 +390,12 @@ function HomePage({ navigate }: { navigate: (p: Page) => void }) {
           <p className="text-[#8a8a8a] text-sm mt-1">Frameworks &amp; more</p>
         </button>
 
-        {/* Experience — col-span-2 */}
-        <div className={`col-span-2 ${cardBase} p-6`}>
+        {/* Experience — full width mobile, span-2 desktop */}
+        <div className={`md:col-span-2 ${cardBase} p-6`}>
           <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#8a8a8a] mb-5">
             Experience
           </p>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {experienceItems.map((exp) => (
               <div key={exp.period}>
                 <p className="font-mono text-[#0d9488] text-xs">{exp.period}</p>
@@ -341,8 +423,7 @@ function WorkPage() {
         {projects.map((project) => (
           <div
             key={project.title}
-            className="grid gap-10"
-            style={{ gridTemplateColumns: "1fr 1.4fr" }}
+            className="grid gap-10 grid-cols-1 md:grid-cols-[1fr_1.4fr]"
           >
             {/* Text */}
             <div>
@@ -383,14 +464,17 @@ function WorkPage() {
               </div>
             </div>
 
-            {/* Image */}
-            <div className="relative rounded-xl overflow-hidden opacity-70 hover:opacity-100 transition-opacity duration-300" style={{ aspectRatio: "4/3" }}>
+            {/* Image — stacks below text on mobile */}
+            <div
+              className="relative rounded-xl overflow-hidden opacity-70 hover:opacity-100 transition-opacity duration-300"
+              style={{ aspectRatio: "4/3" }}
+            >
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
                 className="object-cover"
-                sizes="(max-width: 1200px) 50vw, 600px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
               />
             </div>
           </div>
@@ -451,7 +535,7 @@ function AppsPage() {
     <div>
       <PageHeader title="Apps & Tools" subtitle="Things I've built and shipped." />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {appItems.map((app) => (
           <div key={app.title} className={`${cardBase} p-6`}>
             <div className="flex items-start justify-between gap-3">
@@ -546,7 +630,7 @@ function ContactPage() {
         subtitle="Open to new opportunities, collaborations, and conversations."
       />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {contacts.map((c) => (
           <a
             key={c.label}
@@ -576,9 +660,10 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
+      <MobileNav page={page} navigate={setPage} />
       <Sidebar page={page} navigate={setPage} />
-      <main className="ml-60">
-        <div className="max-w-[920px] px-20 py-16">
+      <main className="md:ml-60 pt-[60px] md:pt-0">
+        <div className="max-w-[920px] px-6 py-8 md:px-20 md:py-16">
           {page === "home" && <HomePage navigate={setPage} />}
           {page === "work" && <WorkPage />}
           {page === "videos" && <VideosPage />}
