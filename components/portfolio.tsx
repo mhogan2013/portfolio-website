@@ -148,8 +148,8 @@ function Sidebar({
               onClick={() => navigate(item.id)}
               className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors duration-150 ${
                 active
-                  ? "text-[#6366f1] bg-[rgba(99,102,241,0.08)]"
-                  : "text-[#525252] hover:text-[#a3a3a3] hover:bg-[rgba(255,255,255,0.03)]"
+                  ? "text-[#0d9488] bg-[rgba(13,148,136,0.08)]"
+                  : "text-[#8a8a8a] hover:text-[#a3a3a3] hover:bg-[rgba(255,255,255,0.03)]"
               }`}
             >
               {item.label}
@@ -164,7 +164,7 @@ function Sidebar({
           href="https://www.linkedin.com/in/hoganmj2013/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#525252] hover:text-[#6366f1] transition-colors duration-150"
+          className="text-[#8a8a8a] hover:text-[#0d9488] transition-colors duration-150"
           aria-label="LinkedIn"
         >
           <LinkedinIcon className="w-4 h-4" />
@@ -173,14 +173,14 @@ function Sidebar({
           href="https://github.com/mhogan2013"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#525252] hover:text-[#6366f1] transition-colors duration-150"
+          className="text-[#8a8a8a] hover:text-[#0d9488] transition-colors duration-150"
           aria-label="GitHub"
         >
           <GithubIcon className="w-4 h-4" />
         </a>
         <a
           href="mailto:hogan.michael.james@gmail.com"
-          className="text-[#525252] hover:text-[#6366f1] transition-colors duration-150"
+          className="text-[#8a8a8a] hover:text-[#0d9488] transition-colors duration-150"
           aria-label="Email"
         >
           <Mail className="w-4 h-4" />
@@ -229,7 +229,7 @@ function HomePage({ navigate }: { navigate: (p: Page) => void }) {
         >
           <span className="text-[#f5f5f5]">Building technology that adds</span>
           <br />
-          <span className="text-[#6366f1]">value, not friction.</span>
+          <span className="text-[#0d9488]">value, not friction.</span>
         </h1>
 
         <p className="text-[#a3a3a3] text-base leading-[1.75] max-w-xl">
@@ -242,20 +242,20 @@ function HomePage({ navigate }: { navigate: (p: Page) => void }) {
         <div className="flex flex-wrap gap-3 pt-1">
           <button
             onClick={() => navigate("work")}
-            className="px-5 py-2.5 bg-[#6366f1] text-white rounded-full text-sm font-medium hover:bg-[#5558e8] transition-colors duration-150"
+            className="px-5 py-2.5 bg-[#0d9488] text-white rounded-full text-sm font-medium hover:bg-[#0b8377] transition-colors duration-150"
           >
-            View my work ↗
+            View my work
           </button>
           <button
             onClick={() => navigate("videos")}
-            className="px-5 py-2.5 border border-[#6366f1] text-[#6366f1] rounded-full text-sm font-medium hover:bg-[rgba(99,102,241,0.08)] transition-colors duration-150"
+            className="px-5 py-2.5 border border-[#0d9488] text-[#0d9488] rounded-full text-sm font-medium hover:bg-[rgba(13,148,136,0.08)] transition-colors duration-150"
           >
             Watch videos
           </button>
           <a
             href="/M.Hogan__Resume.pdf"
             download="Michael_Hogan_Resume.pdf"
-            className="px-5 py-2.5 border border-[rgba(255,255,255,0.12)] text-[#525252] rounded-full text-sm font-medium hover:border-[rgba(255,255,255,0.24)] hover:text-[#a3a3a3] transition-colors duration-150"
+            className="px-5 py-2.5 border border-[#0d9488] text-[#0d9488] rounded-full text-sm font-medium hover:bg-[rgba(13,148,136,0.08)] transition-colors duration-150"
           >
             Download resume ↓
           </a>
@@ -269,13 +269,13 @@ function HomePage({ navigate }: { navigate: (p: Page) => void }) {
           onClick={() => navigate("work")}
           className={`col-span-2 ${cardBase} ${cardHover} p-6 text-left group`}
         >
-          <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#525252] mb-3">
+          <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#8a8a8a] mb-3">
             Featured Project
           </p>
-          <h3 className="text-[#f5f5f5] font-medium group-hover:text-[#6366f1] transition-colors duration-150">
+          <h3 className="text-[#f5f5f5] font-medium group-hover:text-[#0d9488] transition-colors duration-150">
             Billing Underpayments Platform
           </h3>
-          <p className="text-[#525252] text-sm mt-1">
+          <p className="text-[#8a8a8a] text-sm mt-1">
             $715K annualized value · R1 RCM · 2023–2025
           </p>
         </button>
@@ -285,13 +285,13 @@ function HomePage({ navigate }: { navigate: (p: Page) => void }) {
           onClick={() => navigate("apps")}
           className={`col-span-1 ${cardBase} ${cardHover} p-6 text-left group`}
         >
-          <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#525252] mb-3">
+          <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#8a8a8a] mb-3">
             Apps
           </p>
-          <h3 className="text-[#f5f5f5] font-medium group-hover:text-[#6366f1] transition-colors duration-150">
+          <h3 className="text-[#f5f5f5] font-medium group-hover:text-[#0d9488] transition-colors duration-150">
             Tools I&apos;ve built
           </h3>
-          <p className="text-[#525252] text-sm mt-1">1 live product</p>
+          <p className="text-[#8a8a8a] text-sm mt-1">1 live product</p>
         </button>
 
         {/* Videos — col-span-1 */}
@@ -299,18 +299,18 @@ function HomePage({ navigate }: { navigate: (p: Page) => void }) {
           onClick={() => navigate("videos")}
           className={`col-span-1 ${cardBase} ${cardHover} p-6 text-left group`}
         >
-          <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#525252] mb-3">
+          <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#8a8a8a] mb-3">
             Videos
           </p>
-          <h3 className="text-[#f5f5f5] font-medium group-hover:text-[#6366f1] transition-colors duration-150">
+          <h3 className="text-[#f5f5f5] font-medium group-hover:text-[#0d9488] transition-colors duration-150">
             Video Library
           </h3>
-          <p className="text-[#525252] text-sm mt-1">Frameworks &amp; more</p>
+          <p className="text-[#8a8a8a] text-sm mt-1">Frameworks &amp; more</p>
         </button>
 
         {/* Experience — col-span-2 */}
         <div className={`col-span-2 ${cardBase} p-6`}>
-          <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#525252] mb-5">
+          <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#8a8a8a] mb-5">
             Experience
           </p>
           <div className="grid grid-cols-3 gap-4">
@@ -320,7 +320,7 @@ function HomePage({ navigate }: { navigate: (p: Page) => void }) {
                 <p className="text-[#f5f5f5] text-sm mt-1 leading-snug">
                   {exp.title}
                 </p>
-                <p className="text-[#525252] text-xs mt-0.5">{exp.company}</p>
+                <p className="text-[#8a8a8a] text-xs mt-0.5">{exp.company}</p>
               </div>
             ))}
           </div>
@@ -353,7 +353,7 @@ function WorkPage() {
               >
                 {project.title}
               </h3>
-              <p className="text-[#525252] text-sm mt-1">{project.company}</p>
+              <p className="text-[#8a8a8a] text-sm mt-1">{project.company}</p>
               <p className="text-[#a3a3a3] text-sm leading-[1.75] mt-4">
                 {project.description}
               </p>
@@ -363,7 +363,7 @@ function WorkPage() {
                 {project.metrics.map((m) => (
                   <div key={m.label}>
                     <p className="text-[#0d9488] font-medium text-base">{m.value}</p>
-                    <p className="text-[#525252] text-xs mt-0.5 leading-snug">
+                    <p className="text-[#8a8a8a] text-xs mt-0.5 leading-snug">
                       {m.label}
                     </p>
                   </div>
@@ -375,7 +375,7 @@ function WorkPage() {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 text-xs rounded-full border border-[rgba(255,255,255,0.08)] text-[#525252]"
+                    className="px-3 py-1 text-xs rounded-full border border-[rgba(255,255,255,0.08)] text-[#8a8a8a]"
                   >
                     {tag}
                   </span>
@@ -463,7 +463,7 @@ function AppsPage() {
                   Live
                 </span>
               ) : (
-                <span className="shrink-0 px-2 py-0.5 text-xs rounded-full bg-[rgba(255,255,255,0.05)] text-[#525252] border border-[rgba(255,255,255,0.08)]">
+                <span className="shrink-0 px-2 py-0.5 text-xs rounded-full bg-[rgba(255,255,255,0.05)] text-[#8a8a8a] border border-[rgba(255,255,255,0.08)]">
                   Coming Soon
                 </span>
               )}
@@ -476,7 +476,7 @@ function AppsPage() {
                 href={app.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 mt-4 text-sm text-[#6366f1] hover:text-[#818cf8] transition-colors duration-150"
+                className="inline-flex items-center gap-1.5 mt-4 text-sm text-[#0d9488] hover:text-[#0b8377] transition-colors duration-150"
               >
                 Visit app <ExternalLink className="w-3 h-3" />
               </a>
@@ -558,7 +558,7 @@ function ContactPage() {
             className={`${cardBase} ${cardHover} p-6 block`}
           >
             {c.icon}
-            <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#525252] mt-3">
+            <p className="text-[0.65rem] uppercase tracking-[0.1em] text-[#8a8a8a] mt-3">
               {c.label}
             </p>
             <p className="text-[#f5f5f5] text-sm mt-1">{c.value}</p>
