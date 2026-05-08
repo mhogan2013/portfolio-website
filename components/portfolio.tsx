@@ -136,15 +136,20 @@ function MobileNav({
   return (
     <>
       {/* Top bar */}
-      <div className="md:hidden fixed top-0 left-0 right-0 h-[60px] bg-[#0f0f0f] border-b border-[rgba(255,255,255,0.08)] flex items-center justify-between px-6 z-20">
-        <p className="text-[#f5f5f5] font-semibold text-base">Michael Hogan</p>
-        <button
-          onClick={() => setOpen(!open)}
-          className="text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors duration-150 p-1"
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+      <div className="md:hidden fixed top-0 left-0 right-0 h-[60px] bg-[#0f0f0f] border-b border-[rgba(255,255,255,0.08)] z-20">
+        <div className="flex items-center justify-between h-full px-6">
+          <div>
+            <p className="text-[#f5f5f5] font-semibold text-base leading-tight">Michael Hogan</p>
+            <p className="text-[#0d9488] text-[0.7rem] mt-0.5">Product Manager</p>
+          </div>
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors duration-150 p-1"
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Slide-down menu */}
